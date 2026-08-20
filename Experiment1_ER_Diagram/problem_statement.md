@@ -1,5 +1,6 @@
 # ER Diagram Workshop – Submission Template
-
+NAME : TARUN G M
+REG NO : 212223060284
 ## Objective
 To understand and apply ER modeling concepts by creating ER diagrams for real-world applications.
 
@@ -131,32 +132,51 @@ A popular restaurant wants to manage reservations, orders, and billing.
 - Waiters assigned to serve reservations.
 
 ### ER Diagram:
-*Paste or attach your diagram here*  
-![ER Diagram](er_diagram_restaurant.png)
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/9ab2d0de-d46f-427c-968e-38c99cb530eb" />
+
 
 ### Entities and Attributes
 
-| Entity | Attributes (PK, FK) | Notes |
-|--------|--------------------|-------|
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
+
+| **Entity** | **Attributes (PK, FK)** | **Notes** |
+|---|---|---|
+| **Customer** | **customer_id (PK)**, name, phone, email, address | Stores customer details |
+| **Reservation** | **reservation_id (PK)**, reservation_date, reservation_time, no_of_guests, type | Stores table reservation details; type can be Reserved or Walk-in |
+| **Table** | **table_id (PK)**, table_no, capacity, location, status | Stores restaurant table details; status can be Available or Occupied |
+| **Order** | **order_id (PK)**, order_time, order_type | Stores food order details; order type can be Dine-in or Walk-in |
+| **Order_Item** | **order_item_id (PK)**, quantity, unit_price, total_price | Stores individual dishes included in an order |
+| **Dish** | **dish_id (PK)**, dish_name, description, price | Stores menu dish details |
+| **Category** | **category_id (PK)**, category_name, description | Stores dish categories such as Starter, Main, and Dessert |
+| **Waiter** | **waiter_id (PK)**, name, phone | Stores waiter details |
+| **Bill** | **bill_id (PK)**, bill_date, food_total, service_charge, tax, grand_total | Stores billing details for a reservation |
 
 ### Relationships and Constraints
 
-| Relationship | Cardinality | Participation | Notes |
-|--------------|------------|---------------|-------|
-|              |            |               |       |
-|              |            |               |       |
-|              |            |               |       |
+
+| **Relationship** | **Cardinality** | **Participation** | **Notes** |
+|---|---|---|---|
+| **Makes** | 1:M | Customer – Reservation | A customer can make multiple reservations; each reservation belongs to one customer |
+| **Reserved For** | M:1 | Reservation – Table | Each reservation is made for one table; a table can have multiple reservations at different times |
+| **Has** | 1:1 | Reservation – Order | Each reservation has one food order |
+| **Taken By** | M:1 | Order – Waiter | Each order is handled by one waiter; a waiter can handle multiple orders |
+| **Contains** | 1:M | Order – Order_Item | An order can contain multiple order items |
+| **For** | M:1 | Order_Item – Dish | Each order item refers to one dish; a dish can appear in multiple order items |
+| **Belongs To** | M:1 | Dish – Category | Each dish belongs to one category; a category can contain multiple dishes |
+| **Generates** | 1:1 | Reservation – Bill | Each reservation generates one bill containing food and service charges |
 
 ### Assumptions
-- 
-- 
-- 
 
+
+- Each customer, reservation, table, order, order item, dish, category, waiter, and bill has a unique primary key.
+- A customer can make multiple reservations, while each reservation is associated with one customer.
+- A reservation can be either a **Reserved** booking or a **Walk-in**.
+- Each reservation is assigned to one restaurant table.
+- A reservation can have one food order containing multiple dishes.
+- Each order is handled by one waiter, while a waiter can handle multiple orders.
+- Each order item represents a dish and stores its quantity, unit price, and total price.
+- Each dish belongs to one category: **Starter, Main, or Dessert**.
+- A bill is generated for each reservation and includes food total, service charge, tax, and grand total.
+- A table can be reserved multiple times at different dates and times.
 ---
 
 ## Instructions for Students

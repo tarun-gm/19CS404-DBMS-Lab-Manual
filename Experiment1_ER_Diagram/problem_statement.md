@@ -76,31 +76,44 @@ The Central Library wants to manage book lending and cultural events.
 - Overdue fines apply for late returns.
 
 ### ER Diagram:
-*Paste or attach your diagram here*  
-![ER Diagram](er_diagram_library.png)
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/53d039ef-592f-4daf-8f27-e7d92abdb893" />
+
 
 ### Entities and Attributes
 
-| Entity | Attributes (PK, FK) | Notes |
-|--------|--------------------|-------|
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
+| **Entity** | **Attributes (PK, FK)** | **Notes** |
+|---|---|---|
+| **Member** | **member_id (PK)**, name, email, phone, address, join_date | Stores library member details |
+| **Book** | **book_id (PK)**, title, author, category, isbn | Stores book information |
+| **Loan** | **loan_id (PK)**, loan_date, due_date, return_date | Records book borrowing and return details |
+| **Fine** | **fine_id (PK)**, amount, fine_date, status | Stores overdue fine details |
+| **Event** | **event_id (PK)**, event_name, event_date, description | Stores library event details |
+| **Speaker** | **speaker_id (PK)**, name, role, organization | Stores event speakers or authors |
+| **Room** | **room_id (PK)**, room_name, capacity, location, room_type | Stores rooms used for events and study |
+| **Registration** | **registration_id (PK)**, registration_date, status | Records member event registrations |
 
 ### Relationships and Constraints
 
-| Relationship | Cardinality | Participation | Notes |
-|--------------|------------|---------------|-------|
-|              |            |               |       |
-|              |            |               |       |
-|              |            |               |       |
+
+| **Relationship** | **Cardinality** | **Participation** | **Notes** |
+|---|---|---|---|
+| **Borrows** | 1:M | Member – Book – Loan | A member can borrow multiple books; each loan records a borrowing transaction |
+| **Generates** | 1:0..1 | Loan – Fine | A loan may generate zero or one fine for an overdue return |
+| **Has Speaker** | M:M | Event – Speaker | An event can have multiple speakers/authors and a speaker can participate in multiple events |
+| **Registers** | M:M | Event – Member | Members can register for multiple events and an event can have multiple registered members |
+| **Occurs In** | M:1 | Event – Room | Each event takes place in one room; a room can host multiple events at different times |
 
 ### Assumptions
-- 
-- 
-- 
+
+- Each member, book, loan, fine, event, speaker, room, and registration has a unique primary key.
+- A member can borrow multiple books, and each borrowing transaction is recorded as a loan.
+- A book can be borrowed by different members over time.
+- A loan may or may not generate a fine depending on whether the book is returned late.
+- Each event can have one or more speakers or authors.
+- Members can register for multiple library events.
+- Each event is assigned to one room, while a room can be used for multiple events at different times.
+- Rooms can be used for both events and study purposes.
+- Overdue fines are calculated and recorded for books returned after the due date.
 
 ---
 

@@ -1,3 +1,4 @@
+<img width="1536" height="1024" alt="ChatGPT Image Aug 20, 2026, 08_24_08 PM" src="https://github.com/user-attachments/assets/ce82591c-943b-4fd8-9b3a-490f75cf94c3" />
 # ER Diagram Workshop – Submission Template
 
 ## Objective
@@ -22,8 +23,7 @@ FlexiFit Gym wants a database to manage its members, trainers, and fitness progr
 - Payments tracked for memberships and sessions.
 
 ### ER Diagram:
-*Paste or attach your diagram here*  
-![ER Diagram](er_diagram_fitness.png)
+
 
 ## Entities and Attributes
 

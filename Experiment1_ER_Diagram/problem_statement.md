@@ -25,29 +25,41 @@ FlexiFit Gym wants a database to manage its members, trainers, and fitness progr
 *Paste or attach your diagram here*  
 ![ER Diagram](er_diagram_fitness.png)
 
-### Entities and Attributes
+## Entities and Attributes
 
 | Entity | Attributes (PK, FK) | Notes |
-|--------|--------------------|-------|
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
+|---|---|---|
+| Member | **member_id (PK)**, name, membership_type, start_date | Stores registered gym members |
+| Program | **program_id (PK)**, name, description, program_type | Stores fitness programs such as Yoga, Zumba, and Weight Training |
+| Trainer | **trainer_id (PK)**, name, specialization, phone, email | Stores trainer details |
+| Session | **session_id (PK)**, session_date, start_time, end_time, **member_id (FK)**, **trainer_id (FK)** | Stores personal training sessions booked by members |
+| Attendance | **attendance_id (PK)**, status, check_in_time, check_out_time, **session_id (FK)** | Records attendance for each session |
+| Payment | **payment_id (PK)**, payment_type, amount, payment_date, payment_for, **member_id (FK)**, **session_id (FK)** | Tracks membership and session payments |
 
-### Relationships and Constraints
+## Relationships and Constraints
 
 | Relationship | Cardinality | Participation | Notes |
-|--------------|------------|---------------|-------|
-|              |            |               |       |
-|              |            |               |       |
-|              |            |               |       |
+|---|---|---|---|
+| Joins | M:N | Member – Program | A member can join multiple programs and a program can have multiple members |
+| Assigned To | M:N | Program – Trainer | A program can have multiple trainers and a trainer can be assigned to multiple programs |
+| Books | 1:N | Member – Session | A member can book multiple personal training sessions |
+| Conducted By | 1:N | Trainer – Session | A trainer can conduct multiple sessions and each session is conducted by one trainer |
+| Has Attendance | 1:1 | Session – Attendance | Each session has one attendance record |
+| Makes | 1:N | Member – Payment | A member can make multiple payments |
+| For | 1:N | Payment – Session | A payment can be associated with a personal training session |
 
-### Assumptions
-- 
-- 
-- 
+## Assumptions
 
+- Each member is uniquely identified by a **member_id**.
+- Each member registers with a **name, membership type, and start date**.
+- A member can join multiple fitness programs such as **Yoga, Zumba, and Weight Training**.
+- A program can have multiple members and multiple trainers.
+- A trainer can be assigned to multiple fitness programs.
+- Members can book personal training sessions with trainers.
+- Each personal training session is conducted by one trainer.
+- Attendance is recorded for each personal training session.
+- Payments are tracked for both **memberships and personal training sessions**.
+- `member_id`, `trainer_id`, `program_id`, and `session_id` are used as foreign keys where applicable.
 ---
 
 # Scenario B: City Library Event & Book Lending System

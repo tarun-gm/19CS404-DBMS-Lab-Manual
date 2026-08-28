@@ -36,6 +36,22 @@ END;
 
 **Expected Output:**  
 Greater number is: 80
+Program : 
+```
+    num1 NUMBER := 80;  -- First number
+    num2 NUMBER := 50;  -- Second number
+BEGIN
+    IF num1 > num2 THEN
+        DBMS_OUTPUT.PUT_LINE('Greater number is: ' || num1);
+    ELSE
+        DBMS_OUTPUT.PUT_LINE('Greater number is: ' || num2);
+    END IF;
+END;
+```
+Output :
+ 
+ <img width="541" height="122" alt="508897988-b11a6a4a-4cbe-425d-80ce-b5d231b0f66a" src="https://github.com/user-attachments/assets/611b3caf-9c76-44d6-ae25-05e33c1a52b0" />
+
 
 ---
 
@@ -49,6 +65,27 @@ Greater number is: 80
 
 **Expected Output:**  
 Sum of first 10 natural numbers is: 55
+
+Program:
+```
+SET SERVEROUTPUT ON;
+
+DECLARE
+    n NUMBER := 10;       -- Number up to which sum is calculated
+    i NUMBER := 1;        -- Loop counter
+    total_sum NUMBER := 0; -- To store the sum
+BEGIN
+    WHILE i <= n LOOP
+        total_sum := total_sum + i;
+        i := i + 1;
+    END LOOP;
+
+    DBMS_OUTPUT.PUT_LINE('Sum of first ' || n || ' natural numbers is: ' || total_sum);
+END;
+```
+Output:
+ 
+ <img width="617" height="163" alt="508898843-193b5266-f9a9-4632-9a9c-71ea1962d4dc" src="https://github.com/user-attachments/assets/d4d08dea-b692-404b-97da-5256570bf2e4" />
 
 ---
 
@@ -64,6 +101,34 @@ Sum of first 10 natural numbers is: 55
 n = 7  
 Fibonacci sequence: 0, 1, 1, 2, 3, 5, 8
 
+Program:
+```
+DECLARE
+    n NUMBER := 7;        
+    a NUMBER := 0;        
+    b NUMBER := 1;        
+    c NUMBER;             
+    i NUMBER;             
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('Fibonacci sequence:');
+    DBMS_OUTPUT.PUT(a || ', ' || b);
+
+    FOR i IN 3..n LOOP
+        c := a + b;                  
+        DBMS_OUTPUT.PUT(', ' || c);  
+        a := b;                      
+        b := c;
+    END LOOP;
+
+    DBMS_OUTPUT.NEW_LINE;            
+END;
+/
+
+```
+Output:
+
+<img width="458" height="140" alt="508900421-d9b0f411-e6b2-4eab-b7db-607fc35e1b1f" src="https://github.com/user-attachments/assets/06e5b36f-279a-46d6-9018-1b329e5fabbf" />
+
 ---
 
 ## 4. Write a PL/SQL Program to display the number in Reverse Order
@@ -77,6 +142,30 @@ Fibonacci sequence: 0, 1, 1, 2, 3, 5, 8
 n = 1535  
 Reversed number is 5351
 
+Program:
+```
+SET SERVEROUTPUT ON;
+
+DECLARE
+    n NUMBER := 1535;       -- Original number
+    original NUMBER := 1535;-- To keep the original number for display
+    reversed NUMBER := 0;   -- To store the reversed number
+    digit NUMBER;           -- To extract each digit
+BEGIN
+    WHILE n > 0 LOOP
+        digit := MOD(n, 10);              -- Get the last digit
+        reversed := reversed * 10 + digit;-- Build the reversed number
+        n := TRUNC(n / 10);               -- Remove the last digit
+    END LOOP;
+
+    DBMS_OUTPUT.PUT_LINE('n = ' || original);
+    DBMS_OUTPUT.PUT_LINE('Reversed number is ' || reversed);
+END;
+```
+Output:
+
+<img width="352" height="174" alt="508901770-ef0d2245-3f31-4eb4-8dda-a8fb9ab87a69" src="https://github.com/user-attachments/assets/061428db-6d3b-436b-8005-cdc36c379ab4" />
+
 ---
 
 ## 5. Write a PL/SQL program to find the largest of three numbers
@@ -89,6 +178,33 @@ Reversed number is 5351
 **Expected Output:**  
 a = 10, b = 9, c = 15  
 Largest of three number is 15
+
+Program :
+```
+SET SERVEROUTPUT ON;
+
+DECLARE
+    a NUMBER := 10;
+    b NUMBER := 9;
+    c NUMBER := 15;
+    largest NUMBER;
+BEGIN
+    IF a >= b AND a >= c THEN
+        largest := a;
+    ELSIF b >= a AND b >= c THEN
+        largest := b;
+    ELSE
+        largest := c;
+    END IF;
+
+    DBMS_OUTPUT.PUT_LINE('a = ' || a || ', b = ' || b || ', c = ' || c);
+    DBMS_OUTPUT.PUT_LINE('Largest of three number is ' || largest);
+END;
+```
+
+Output:
+
+<img width="379" height="124" alt="508900926-b7e997e6-0b9e-451e-9985-af62a2339568" src="https://github.com/user-attachments/assets/9aceaa26-ceb1-4a80-8ea0-a8532ffa4801" />
 
 ## RESULT
 Thus, the PL/SQL programs using variables, conditionals, and loops were executed successfully.

@@ -40,6 +40,26 @@ DROP VIEW view_name;
 ```
 -- EXPERIMENT 5: SUBQUERIES AND VIEWS
 
+-- COMMON TABLE
+
+CREATE TABLE employees (
+    emp_id NUMBER PRIMARY KEY,
+    emp_name VARCHAR2(50),
+    department VARCHAR2(50),
+    salary NUMBER
+);
+
+INSERT INTO employees VALUES (101, 'Arun', 'IT', 50000);
+INSERT INTO employees VALUES (102, 'Bala', 'HR', 30000);
+INSERT INTO employees VALUES (103, 'Charan', 'IT', 60000);
+INSERT INTO employees VALUES (104, 'Divya', 'HR', 40000);
+INSERT INTO employees VALUES (105, 'Esha', 'Finance', 45000);
+
+COMMIT;
+```
+## Output:
+<img width="991" height="401" alt="image" src="https://github.com/user-attachments/assets/3b11df88-9f63-409a-8975-7670617473c4" />
+
 **Question 1**
 ```
 SELECT *

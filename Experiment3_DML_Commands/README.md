@@ -45,17 +45,6 @@ Used to retrieve records from a table.
 ```sql
 SELECT column1, column2 FROM table_name WHERE condition;
 ```
-## Commom table 
-```
-CREATE TABLE Student (
-    student_id NUMBER,
-    student_name VARCHAR2(30),
-    department VARCHAR2(20),
-    marks NUMBER
-);
-```
-## Output:
-<img width="977" height="358" alt="image" src="https://github.com/user-attachments/assets/f1c3b018-b25d-43e7-aa49-ec4a26c44d80" />
 
 **Question 1**
 ```
